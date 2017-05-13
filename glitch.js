@@ -1,6 +1,5 @@
 const fs = require("fs");
 const gifwriter = require("writegif");
-const orig = fs.readFileSync('download.gif')
 
 // EFFECTS
 const effectMap = [];
@@ -12,8 +11,19 @@ effectMap.push(overlay);
 
 const randomEffect = effectMap[Math.floor(Math.random()*effectMap.length)];
 
-randomEffect(orig, function (err, img) {
-	gifwriter(img, function (err, gif) {
-		fs.writeFileSync("glitch.gif", gif)
+module.exports = function Glitch() {
+	const orig = fs.readFileSync('download.gif');
+	
+	return new Promise((resolve, reject) => {
+		randomEffect(orig, function (err, img) {
+			gifwriter(img, function (err, gif) {
+				if( err ) {
+					reject(err);
+				} else {
+					fs.writeFileSync("glitch.gif", gif);
+					resolve();
+				}
+			});
+		});
 	});
-});
+}
