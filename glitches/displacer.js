@@ -1,7 +1,7 @@
 const readimage = require('readimage');
 const glitcher = require('glitcher');
 
-module.exports = function glitch(orig, callback) {
+module.exports = function displacer(orig, callback) {
 	readimage(orig, function (err, image) {
 		if (err) {
 			return callback(err);
