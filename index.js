@@ -6,27 +6,24 @@
  * (c) 2017, Budapest
  */
 
-const fs = require("fs")
-const request = require('request');
 const gifwriter = require("writegif");
 const TwitterApp = require("./twitter-client");
+const Giphy = require("./giphy");
 
-TwitterApp.addGif('img/car.gif');
+/*TwitterApp.addGif('img/car.gif');
 TwitterApp.setMessage('This is my neat message.');
+*/
 /*TwitterApp.sendTweet();*/
+
+Giphy.grab().then(function (){
+});
 
 TwitterApp.onComplete = function() {
 
 }
-/*
-request('http://media0.giphy.com/media/op7uqYWBm3R04/giphy.gif')
-	.on('end', complete)
-	.pipe(fs.createWriteStream('download.gif'))
-*/
 
-setInterval(function function_name(argument) {
-	console.log('test')
-},300)
+/*
+*/
 
 function complete() {
 	const orig = fs.readFileSync('download.gif')
