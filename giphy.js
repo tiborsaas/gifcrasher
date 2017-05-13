@@ -40,7 +40,6 @@ module.exports = (function GiphyAPI() {
 
 	return {
 		get: getRandomTrending,
-		grab: grabFile,
-		onComplete: onComplete
+		grab: grabFile
 	}
 })();
