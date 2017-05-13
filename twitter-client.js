@@ -1,3 +1,4 @@
+const fs = require("fs");
 const Twitter = require('twitter');
 const tokens = require('./tokens');
 
@@ -19,7 +20,12 @@ module.exports = (function TwitterApp() {
 	const mediaType   = 'image/gif';
 
 	const addGif = function addGif(fileName) {
-		mediaData = require('fs').readFileSync(fileName);
+		try {
+			mediaData = require('fs').readFileSync(fileName);
+		} catch (e) {
+			console.log('GIF not found error:', fileName);
+			return false;
+		}
 		mediaSize = require('fs').statSync(fileName).size;
 	}
 
