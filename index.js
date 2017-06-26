@@ -9,13 +9,13 @@
 const Giphy = require("./giphy");
 const Glitcher = require('./glitch');
 const Twitter = require("./twitter-client");
-const devMode = true;
+const devMode = false;
 
 Giphy.grab()
 	.then(Glitcher)
 	.then(function() {
 		Twitter.addGif('glitch.gif');
-		Twitter.setMessage('Superawesome test post.');
+		Twitter.setMessage('System test');
 		if(!devMode) {
 			Twitter.sendTweet();
 		}
